@@ -1,11 +1,12 @@
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
-import { CURRENCIES } from '../const/const';
+import { CURRENCIES, DEFAULT } from '../const/const';
+import { convertCurrency } from '../helper/convert_currency';
 import './currency_converter.css';
 
 function CurrencyConverter() {
-    const [firstNumber, setFirstNumber] = useState();
-    const [secondNumber, setSecondNumber] = useState();
+    const [firstNumber, setFirstNumber] = useState(DEFAULT.VALUE);
+    const [secondNumber, setSecondNumber] = useState(DEFAULT.VALUE);
     const [firstCurrencySelect, setFirstCurrencySelect] = useState(
         CURRENCIES.USD
     );
@@ -16,19 +17,7 @@ function CurrencyConverter() {
     const currencyOptions = Object.values(CURRENCIES).map((currency) => (
         <option key={currency}>{currency}</option>
     ));
-    const dataCource = useSelector((store) => store.dataCourse.dataCourse);
-    const [EUR, USD] = dataCource;
-
-    function convertCurrency(amount, fromCurrency, toCurrency) {
-        const exchangeRates = {
-            UAN: { UAN: 1, USD: 1 / USD.buy, EUR: 1 / EUR.buy },
-            USD: { UAN: USD.buy, USD: 1, EUR: USD.buy / EUR.buy },
-            EUR: { UAN: EUR.buy, USD: EUR.buy / USD.buy, EUR: 1 },
-        };
-        const exchangeRate = exchangeRates[fromCurrency][toCurrency];
-
-        return Number((amount * exchangeRate).toFixed(2));
-    }
+    const dataCourse = useSelector((store) => store.dataCourse.dataCourse);
 
     return (
         <div className="container">
@@ -44,7 +33,8 @@ function CurrencyConverter() {
                             convertCurrency(
                                 event.target.value,
                                 firstCurrencySelect,
-                                secondCurrencySelect
+                                secondCurrencySelect,
+                                dataCourse
                             )
                         );
                     }}
@@ -57,7 +47,8 @@ function CurrencyConverter() {
                             convertCurrency(
                                 firstNumber,
                                 event.target.value,
-                                secondCurrencySelect
+                                secondCurrencySelect,
+                                dataCourse
                             )
                         );
                     }}
@@ -77,7 +68,8 @@ function CurrencyConverter() {
                             convertCurrency(
                                 event.target.value,
                                 secondCurrencySelect,
-                                firstCurrencySelect
+                                firstCurrencySelect,
+                                dataCourse
                             )
                         );
                     }}
@@ -90,7 +82,8 @@ function CurrencyConverter() {
                             convertCurrency(
                                 secondNumber,
                                 event.target.value,
-                                firstCurrencySelect
+                                firstCurrencySelect,
+                                dataCourse
                             )
                         );
                     }}

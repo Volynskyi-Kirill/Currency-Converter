@@ -2,8 +2,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import './header.css';
 
 function Header() {
-    const dataCource = useSelector((store) => store.dataCourse.dataCourse);
-    const [EUR, USD] = dataCource;
+    const dataCourse = useSelector((store) => store.dataCourse.dataCourse);
+    const [EUR, USD] = dataCourse;
 
     return (
         <header>

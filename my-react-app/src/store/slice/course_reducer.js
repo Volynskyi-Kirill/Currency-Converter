@@ -9,14 +9,14 @@ const dataCourse = createSlice({
     name: 'dataCourse',
     initialState,
     reducers: {
-        changeDataCource: (state, action) => {
+        changeDataCourse: (state, action) => {
             state.dataCourse = action.payload;
         },
     },
 });
 
 const { actions, reducer } = dataCourse;
-const { changeDataCource } = actions;
+const { changeDataCourse } = actions;
 const courseData = reducer;
 
-export { courseData, changeDataCource };
+export { courseData, changeDataCourse };

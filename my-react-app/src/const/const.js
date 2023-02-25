@@ -1,12 +1,22 @@
 const API = {
     CURRENCY_RATES:
         'https://api.privatbank.ua/p24api/pubinfo?exchange&json&coursid=11',
+    // "https://api.minfin.com.ua/mb/246b0414ae147b06a900152882fef622c5aee6a0/"
+    // 'https://api.monobank.ua/bank/currency',
 };
 
 const CURRENCIES = {
     USD: 'USD',
     EUR: 'EUR',
     UAN: 'UAN',
+};
+
+const DEFAULT = {
+    VALUE: '',
+};
+
+const NUMBER = {
+    ONE: 1,
 };
 
 const TEST_RESPONCE = [
@@ -24,4 +34,4 @@ const TEST_RESPONCE = [
     },
 ];
 
-export { API, TEST_RESPONCE, CURRENCIES };
+export { API, TEST_RESPONCE, CURRENCIES, DEFAULT, NUMBER };
