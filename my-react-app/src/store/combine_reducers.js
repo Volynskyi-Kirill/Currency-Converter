@@ -1,10 +1,8 @@
 import { combineReducers } from 'redux';
-import { course } from './course_reducer';
-import { currenciesSelect } from './currencies_selected';
+import { courseData } from './course_reducer';
 
 const currencyRates = combineReducers({
-    course,
-    currenciesSelect,
+    courseData,
 });
 
 export { currencyRates };

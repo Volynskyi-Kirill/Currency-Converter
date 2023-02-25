@@ -17,6 +17,6 @@ const dataCourse = createSlice({
 
 const { actions, reducer } = dataCourse;
 const { changeDataCource } = actions;
-const course = reducer;
+const courseData = reducer;
 
-export { course, changeDataCource };
+export { courseData, changeDataCource };

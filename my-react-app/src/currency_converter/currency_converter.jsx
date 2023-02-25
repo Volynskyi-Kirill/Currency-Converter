@@ -1,30 +1,23 @@
 import { useState } from 'react';
 import { CURRENCIES } from '../const/const';
 import { useDispatch, useSelector } from 'react-redux';
-import {
-    changeFirstInput,
-    changeSecondInput,
-} from '../store/currencies_selected';
 import './currency_converter.css';
 
 function CurrencyConverter() {
-    const dispatch = useDispatch();
-
     const [firstNumber, setFirstNumber] = useState();
     const [secondNumber, setSecondNumber] = useState();
+    const [firstCurrencySelect, setFirstCurrencySelect] = useState(
+        CURRENCIES.USD
+    );
+    const [secondCurrencySelect, setSecondCurrencySelect] = useState(
+        CURRENCIES.UAN
+    );
 
     const currencyOptions = Object.values(CURRENCIES).map((currency) => (
         <option key={currency}>{currency}</option>
     ));
-    const dataCource = useSelector((store) => store.course.dataCourse);
+    const dataCource = useSelector((store) => store.courseData.dataCourse);
     const [EUR, USD] = dataCource;
-
-    const firstSelect = useSelector(
-        (store) => store.currenciesSelect.firstSelect
-    );
-    const secondSelect = useSelector(
-        (store) => store.currenciesSelect.secondSelect
-    );
 
     function convertCurrency(amount, fromCurrency, toCurrency) {
         const exchangeRates = {
@@ -50,8 +43,8 @@ function CurrencyConverter() {
                         setSecondNumber(
                             convertCurrency(
                                 event.target.value,
-                                firstSelect,
-                                secondSelect
+                                firstCurrencySelect,
+                                secondCurrencySelect
                             )
                         );
                     }}
@@ -59,16 +52,16 @@ function CurrencyConverter() {
                 <select
                     className="select-currency"
                     onChange={(event) => {
-                        dispatch(changeFirstInput(event.target.value));
+                        setFirstCurrencySelect(event.target.value);
                         setSecondNumber(
                             convertCurrency(
                                 firstNumber,
                                 event.target.value,
-                                secondSelect
+                                secondCurrencySelect
                             )
                         );
                     }}
-                    value={firstSelect}
+                    value={firstCurrencySelect}
                 >
                     {currencyOptions}
                 </select>
@@ -83,8 +76,8 @@ function CurrencyConverter() {
                         setFirstNumber(
                             convertCurrency(
                                 event.target.value,
-                                secondSelect,
-                                firstSelect
+                                secondCurrencySelect,
+                                firstCurrencySelect
                             )
                         );
                     }}
@@ -92,16 +85,16 @@ function CurrencyConverter() {
                 <select
                     className="select-currency"
                     onChange={(event) => {
-                        dispatch(changeSecondInput(event.target.value));
+                        setSecondCurrencySelect(event.target.value);
                         setFirstNumber(
                             convertCurrency(
                                 secondNumber,
                                 event.target.value,
-                                firstSelect
+                                firstCurrencySelect
                             )
                         );
                     }}
-                    value={secondSelect}
+                    value={secondCurrencySelect}
                 >
                     {currencyOptions}
                 </select>
