@@ -1,7 +1,6 @@
 async function getData(API) {
     try {
         const response = await fetch(API);
-        console.log('response: ', response);
         if (!response.ok) {
             alert(`Ошибка HTTP: ${response.status}`);
         }

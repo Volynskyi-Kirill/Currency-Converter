@@ -14,7 +14,6 @@ function App() {
     // useEffect(() => {
     //     async function fetchData() {
     //         const course = await getData(API.CURRENCY_RATES);
-    //         console.log('course: ', course);
     //         // dispatch(changeDataCourse(course))
     //     }
     //     fetchData();
