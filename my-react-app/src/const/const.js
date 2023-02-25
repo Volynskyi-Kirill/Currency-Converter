@@ -19,7 +19,7 @@ const NUMBER = {
     ONE: 1,
 };
 
-const TEST_RESPONCE = [
+const TEST_RESPONSE = [
     {
         ccy: 'EUR',
         base_ccy: 'UAH',
@@ -34,4 +34,4 @@ const TEST_RESPONCE = [
     },
 ];
 
-export { API, TEST_RESPONCE, CURRENCIES, DEFAULT, NUMBER };
+export { API, TEST_RESPONSE, CURRENCIES, DEFAULT, NUMBER };

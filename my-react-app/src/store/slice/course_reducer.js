@@ -1,8 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { TEST_RESPONCE } from '../../const/const';
+import { TEST_RESPONSE } from '../../const/const';
 
 const initialState = {
-    dataCourse: TEST_RESPONCE,
+    dataCourse: TEST_RESPONSE,
 };
 
 const dataCourse = createSlice({
