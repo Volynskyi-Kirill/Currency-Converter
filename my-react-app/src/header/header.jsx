@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import './header.css';
 
 function Header() {
-    const dataCource = useSelector((store) => store.courseData.dataCourse);
+    const dataCource = useSelector((store) => store.dataCourse.dataCourse);
     const [EUR, USD] = dataCource;
 
     return (

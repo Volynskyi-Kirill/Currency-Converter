@@ -1,6 +1,6 @@
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
 import { CURRENCIES } from '../const/const';
-import { useDispatch, useSelector } from 'react-redux';
 import './currency_converter.css';
 
 function CurrencyConverter() {
@@ -16,7 +16,7 @@ function CurrencyConverter() {
     const currencyOptions = Object.values(CURRENCIES).map((currency) => (
         <option key={currency}>{currency}</option>
     ));
-    const dataCource = useSelector((store) => store.courseData.dataCourse);
+    const dataCource = useSelector((store) => store.dataCourse.dataCourse);
     const [EUR, USD] = dataCource;
 
     function convertCurrency(amount, fromCurrency, toCurrency) {
